@@ -11,7 +11,7 @@ builder.Services.AddSwaggerGen();
 
 // Configure DbContext
 builder.Services.AddDbContext<QuotationMinderDbContext>(options =>
-    options.UseInMemoryDatabase("QuotationMinderDb"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Register repositories
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
